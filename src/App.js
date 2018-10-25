@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import WeatherWeek from './components/WeatherWeek'
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        
-      </div>
-    );
+    return <div>
+        <WeatherWeek />
+      </div>;
   }
 }
 
