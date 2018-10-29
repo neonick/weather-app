@@ -38,7 +38,7 @@ const WeekDayDM = styled.span`
   font-size: 20px;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 10px; 
 `;
 
 export default class WeatherDay extends Component {
