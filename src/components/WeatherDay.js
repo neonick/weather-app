@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import styled from "styled-components";
 
 const WeatherDayStyled = styled.li`
-  width: 150px;
-  height: 130px;
+  width: ${props => (props.primary ? "280px" : "130px")};
+  height: ${props => (props.primary ? "240px" : "120px")};
   background: ${props => (props.primary ? "lightyellow" : "white")};
   box-shadow: ${props => (props.primary ? "0 0 3px yellow" : "none")};
   border: 1px solid #999;
   border-radius: 7px;
   margin-right: 20px;
-  display: inline-block;
+  margin-bottom: 20px;
+  display: ${props => (props.primary ? "block" : "inline-block")};
   padding-top: 45px;
   box-sizing: border-box;
   position: relative;
+  text-align: center;
 `;
 
 const WeekDayName = styled.span`
