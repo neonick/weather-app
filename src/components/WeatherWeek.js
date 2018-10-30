@@ -17,7 +17,7 @@ export class WeatherWeek extends Component {
         <WeatherDay dm="29.10" day="23" night="15" dayname="ПН" status="ясно-понятно" primary />
 
         <br />
-        <h2>Weekly</h2>
+        <h2>Next week</h2>
         <WeatherDay dm="30.10" day="23" night="15" dayname="ВТ" status="ясно" />
         <WeatherDay dm="31.10" day="23" night="15" dayname="СР" status="ясно" />
         <WeatherDay dm="1.11" day="23" night="15" dayname="ЧТ" status="облачно" />
@@ -25,7 +25,11 @@ export class WeatherWeek extends Component {
         <WeatherDay dm="3.11" day="23" night="15" dayname="СБ" status="дождь" />
         <WeatherDay dm="4.11" day="23" night="15" dayname="ВС" status="ясно" />
         <WeatherDay dm="4.11" day="23" night="15" dayname="ПН" status="ясно" />
+
+        <p>Weather data provided by Apixu Weather API solution</p>
       </WeatherWeekStyled>;
+
+      
   }
 }
 

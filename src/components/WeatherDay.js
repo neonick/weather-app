@@ -4,13 +4,12 @@ import styled from "styled-components";
 const WeatherDayStyled = styled.li`
   width: ${props => (props.primary ? "280px" : "130px")};
   height: ${props => (props.primary ? "240px" : "120px")};
-  background: ${props => (props.primary ? "lightyellow" : "white")};
-  box-shadow: ${props => (props.primary ? "0 0 3px yellow" : "none")};
+  background: white;
   border: 1px solid #999;
   border-radius: 7px;
   margin-right: 20px;
   margin-bottom: 20px;
-  display: ${props => (props.primary ? "block" : "inline-block")};
+  display: inline-block;
   padding-top: 45px;
   box-sizing: border-box;
   position: relative;
