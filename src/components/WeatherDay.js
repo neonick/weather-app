@@ -22,6 +22,7 @@ const WeekDayName = styled.span`
   position: absolute;
   top: 10px;
   left: 10px;
+  text-transform: uppercase;
 `
 
 const WeekDayStatus = styled.span`
@@ -48,11 +49,14 @@ export default class WeatherDay extends Component {
   render() {
     return <WeatherDayStyled primary={this.props.primary}>
         <WeekDayName>{this.props.dayname}</WeekDayName>
-        <WeekDayDM>{this.props.dm}</WeekDayDM>
-        днём {this.props.day || 0}
+        <WeekDayDM>{this.props.date}</WeekDayDM>
+        <div>
+          <img src={this.props.pic} alt='weather icon'/>
+        </div>
+        температура {this.props.temp}
         °C
         <br />
-        ночью {this.props.night || 0}
+        ощущается как {this.props.feel}
         °C
         <WeekDayStatus>{this.props.status}</WeekDayStatus>
       </WeatherDayStyled>;
