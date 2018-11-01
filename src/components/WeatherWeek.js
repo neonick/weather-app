@@ -8,6 +8,7 @@ const url =
 
 const locale = require('date-fns/locale/ru')
 
+// const conditions = require("./conditions.json");
 
 const WeatherWeekStyled = styled.ul`
   margin: 60px auto;
@@ -32,6 +33,10 @@ export class WeatherWeek extends Component {
     return format(date, "dd", { locale })
   }
 
+  formatStatus(statuscode) {
+
+  }
+
   getWeekList() {
     const { isLoading, weather } = this.state;
 
@@ -39,14 +44,15 @@ export class WeatherWeek extends Component {
       return <div>Загрузка...</div>
     }
     else {
-      return weather.forecast.forecastday.map((day) => {
-        return <WeatherDay 
-                  date={this.formatDate(day.date)} 
-                  temp={day.day.avgtemp_c} 
-                  feel={day.day.avgtemp_f}
-                  dayname={this.formatDayOfWeek(day.date)}
-                  status={day.day.condition.text}
-                  pic={day.day.condition.icon} 
+      return weather.forecast.forecastday.map((item) => {
+        return <WeatherDay
+                  key={item.date_epoch} 
+                  date={this.formatDate(item.date)} 
+                  temp={item.day.avgtemp_c} 
+                  feel={item.day.avgtemp_f}
+                  dayname={this.formatDayOfWeek(item.date)}
+                  status={item.day.condition.text}
+                  pic={item.day.condition.icon} 
                 />
       })
       
@@ -68,6 +74,7 @@ export class WeatherWeek extends Component {
   componentDidMount() {
     this.getWeatherData();
   }
+
 
   render() {
 
