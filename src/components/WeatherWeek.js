@@ -36,18 +36,18 @@ export class WeatherWeek extends Component {
     const { isLoading, weather } = this.state;
 
     if (isLoading) {
-      return <div>loading...</div>
+      return <div>Загрузка...</div>
     }
     else {
       return weather.forecast.forecastday.map((day) => {
-        return (<WeatherDay 
-          date={this.formatDate(day.date)} 
-          temp={day.day.avgtemp_c} 
-          feel={day.day.avgtemp_f}
-          dayname={this.formatDayOfWeek(day.date)}
-          status={day.day.condition.text}
-          pic={day.day.condition.icon} 
-          />)
+        return <WeatherDay 
+                  date={this.formatDate(day.date)} 
+                  temp={day.day.avgtemp_c} 
+                  feel={day.day.avgtemp_f}
+                  dayname={this.formatDayOfWeek(day.date)}
+                  status={day.day.condition.text}
+                  pic={day.day.condition.icon} 
+                />
       })
       
       
@@ -75,12 +75,12 @@ export class WeatherWeek extends Component {
 
     return <WeatherWeekStyled>
         <h1>
-          Weather at <span Style="color: red">Krasnodar</span>
+          Погода в <span Style="color: red">Краснодаре</span>
         </h1>
 
-        <h2>Today </h2>
+        <h2>Погода сейчас </h2>
 
-        {isLoading ? <div>loading...</div> : 
+        {isLoading ? <div>Загрузка...</div> : 
           <WeatherDay 
           date={this.formatDate(weather.location.localtime, true)} 
           temp={weather.current.temp_c} 
@@ -92,11 +92,10 @@ export class WeatherWeek extends Component {
         }
 
         <br />
-        <h2>Next week</h2>
+        <h2>Погода на неделю</h2>
         
         {this.getWeekList()}
 
-        <p>Weather data provided by Apixu Weather API solution</p>
       </WeatherWeekStyled>;
 
       
