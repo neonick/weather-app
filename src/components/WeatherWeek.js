@@ -8,7 +8,7 @@ const url =
 
 const locale = require('date-fns/locale/ru')
 
-// const conditions = require("./conditions.json");
+const conditions = require("./conditions.js");
 
 const WeatherWeekStyled = styled.ul`
   margin: 60px auto;
@@ -25,6 +25,10 @@ export class WeatherWeek extends Component {
     }
   }
 
+  componentDidMount() {
+    this.getWeatherData();
+  }
+
   formatDate(date, timeflag) {
     return timeflag ? format(date, "D.M, H:mm") : format(date, "D.M")
   }
@@ -33,9 +37,14 @@ export class WeatherWeek extends Component {
     return format(date, "dd", { locale })
   }
 
-  formatStatus(statuscode) {
-
+  formatStatus(status, dayflag) {
+    const result = conditions.find((el) => {
+        return el.code === status;
+    })
+    return dayflag === 0 ? result.night_text : result.day_text;
   }
+
+  
 
   getWeekList() {
     const { isLoading, weather } = this.state;
@@ -50,8 +59,10 @@ export class WeatherWeek extends Component {
                   date={this.formatDate(item.date)} 
                   temp={item.day.avgtemp_c} 
                   feel={item.day.avgtemp_f}
+                  temp_max={item.day.maxtemp_c}
+                  temp_min={item.day.mintemp_c}
                   dayname={this.formatDayOfWeek(item.date)}
-                  status={item.day.condition.text}
+                  status={this.formatStatus(item.day.condition.code)}
                   pic={item.day.condition.icon} 
                 />
       })
@@ -71,9 +82,7 @@ export class WeatherWeek extends Component {
       .catch(error => console.error(error));
   }
 
-  componentDidMount() {
-    this.getWeatherData();
-  }
+  
 
 
   render() {
@@ -82,7 +91,7 @@ export class WeatherWeek extends Component {
 
     return <WeatherWeekStyled>
         <h1>
-          Погода в <span Style="color: red">Краснодаре</span>
+          Погода в <span>Краснодаре</span>
         </h1>
 
         <h2>Погода сейчас </h2>
@@ -93,7 +102,7 @@ export class WeatherWeek extends Component {
           temp={weather.current.temp_c} 
           feel={weather.current.feelslike_c}
           dayname={this.formatDayOfWeek(weather.location.localtime)}
-          status={weather.current.condition.text}
+          status={this.formatStatus(weather.current.condition.code, weather.current.is_day)}
           pic={weather.current.condition.icon} 
           primary />
         }
