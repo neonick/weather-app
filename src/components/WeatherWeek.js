@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import WeatherDay from "./WeatherDay";
+import Loader from "./Loader";
 import styled from "styled-components";
 import { format } from "date-fns";
 
@@ -50,7 +51,7 @@ export class WeatherWeek extends Component {
     const { isLoading, weather } = this.state;
 
     if (isLoading) {
-      return <div>Загрузка...</div>
+      return <Loader />
     }
     else {
       return weather.forecast.forecastday.map((item) => {
@@ -96,7 +97,7 @@ export class WeatherWeek extends Component {
 
         <h2>Погода сейчас </h2>
 
-        {isLoading ? <div>Загрузка...</div> : 
+        {isLoading ? <Loader /> : 
           <WeatherDay 
           date={this.formatDate(weather.location.localtime, true)} 
           temp={weather.current.temp_c} 
