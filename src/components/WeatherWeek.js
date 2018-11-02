@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { format } from "date-fns";
 
 const url =
-  "http://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=Krasnodar&days=7";
+  "https://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=Krasnodar&days=7";
 
 const locale = require('date-fns/locale/ru')
 
