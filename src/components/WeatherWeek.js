@@ -85,7 +85,7 @@ export class WeatherWeek extends Component {
 
     return <WeatherWeekStyled>
         <h1>
-          <span>{this.props.city}</span>
+          <span>{this.props.cityrussian}</span>
         </h1>
 
         {/* <h2>Погода сейчас </h2> */}

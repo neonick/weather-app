@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from "styled-components";
 
-const WeatherDayStyled = styled.li`
+const WeatherDayStyled = styled.div`
   width: ${props => (props.primary ? "230px" : "130px")};
   height: 215px;
   background: white;
@@ -51,7 +51,10 @@ const CurrentTemp = styled.div`
 `
 
 const WeekDayIcon = styled.div`
-  
+  img {
+    width: 50px;
+    margin: 8px 0;
+  }
 `
 
 export default class WeatherDay extends Component {
