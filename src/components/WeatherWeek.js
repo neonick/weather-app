@@ -4,9 +4,6 @@ import Loader from "./Loader";
 import styled from "styled-components";
 import { format } from "date-fns";
 
-const url =
-  "https://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=Krasnodar&days=7";
-
 const locale = require('date-fns/locale/ru')
 
 const conditions = require("./conditions.js");
@@ -73,18 +70,14 @@ export class WeatherWeek extends Component {
   }
 
   getWeatherData() {
+    const url = "https://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=" + this.props.city + "&days=7";
     fetch(url)
       .then(response => response.json())
       .then(weather => {
-        this.setState({ 
-          weather, 
-          isLoading: false })
+        this.setState({ weather, isLoading: false });
       })
       .catch(error => console.error(error));
   }
-
-  
-
 
   render() {
 
@@ -92,10 +85,10 @@ export class WeatherWeek extends Component {
 
     return <WeatherWeekStyled>
         <h1>
-          Погода в <span>Краснодаре</span>
+          <span>{this.props.city}</span>
         </h1>
 
-        <h2>Погода сейчас </h2>
+        {/* <h2>Погода сейчас </h2> */}
 
         {isLoading ? <Loader /> : 
           <WeatherDay 
@@ -109,7 +102,7 @@ export class WeatherWeek extends Component {
         }
 
         <br />
-        <h2>Погода на неделю</h2>
+        {/* <h2>Погода на неделю</h2> */}
         
         {this.getWeekList()}
 

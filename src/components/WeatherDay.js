@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const WeatherDayStyled = styled.li`
   width: ${props => (props.primary ? "230px" : "130px")};
-  height: ${props => (props.primary ? "215px" : "185px")};
+  height: 215px;
   background: white;
   border: 1px solid #999;
   border-radius: 7px;
@@ -50,6 +50,10 @@ const CurrentTemp = styled.div`
   margin-bottom: 12px;
 `
 
+const WeekDayIcon = styled.div`
+  
+`
+
 export default class WeatherDay extends Component {
   
   renderCurrent() {
@@ -60,24 +64,22 @@ export default class WeatherDay extends Component {
         </div>;
     } else {
       return <div>
-          {this.props.temp_max} – {this.props.temp_min}°
+          днём {this.props.temp_max}°
+          <br/>
+          ночью {this.props.temp_min}°
         </div>;
     }
-  }
-
-  renderAverage() {
-
   }
 
   render() {
     return <WeatherDayStyled primary={this.props.primary}>
         <WeekDayName>{this.props.dayname}</WeekDayName>
         <WeekDayDM>{this.props.date}</WeekDayDM>
-        <div>
+        <WeekDayIcon>
           <img src={this.props.pic} alt="weather icon" />
-        </div>
+        </WeekDayIcon>
         {this.renderCurrent()}
-        <WeekDayStatus  primary={this.props.primary}>{this.props.status}</WeekDayStatus>
+        <WeekDayStatus primary={this.props.primary}>{this.props.status}</WeekDayStatus>
       </WeatherDayStyled>;
   }
 }
