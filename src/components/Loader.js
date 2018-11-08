@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
 const anim = keyframes`
   0% {
@@ -9,7 +9,7 @@ const anim = keyframes`
     transform: scale(1.0);
     opacity: 0;
   }
-`;
+`
 
 const LoaderBox = styled.div`
   width: 40px;
@@ -20,7 +20,7 @@ const LoaderBox = styled.div`
 `
 
 export default class Loader extends Component {
-  render() {
-    return <LoaderBox />;
+  render () {
+    return <LoaderBox />
   }
 }
