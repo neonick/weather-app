@@ -28,7 +28,7 @@ const WeekDayName = styled.span`
 const WeekDayStatus = styled.span`
   color: grey;
   text-align: right;
-  font-size: ${props => (props.primary ? '16px' : '12px')};
+  font-size: 13px;
   position: absolute;
   bottom: 10px;
   right: 10px;

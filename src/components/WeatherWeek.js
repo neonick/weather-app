@@ -5,15 +5,13 @@ import styled from 'styled-components'
 import { format } from 'date-fns'
 
 const locale = require('date-fns/locale/ru')
-
 const conditions = require('./conditions.js')
 
-const WeatherWeekStyled = styled.ul`
+const WeatherWeekStyled = styled.div`
   margin: 60px auto;
   max-width: 1060px;
 `
-
-export class WeatherWeek extends Component {
+export default class WeatherWeek extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -23,7 +21,13 @@ export class WeatherWeek extends Component {
   }
 
   componentDidMount () {
-    this.getWeatherData()
+    const url = 'https://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=' + this.props.city + '&days=7'
+    fetch(url)
+      .then(response => response.json())
+      .then(weather => {
+        this.setState({ weather, isLoading: false })
+      })
+      .catch(error => console.error(error))
   }
 
   formatDate (date, timeflag) {
@@ -65,19 +69,6 @@ export class WeatherWeek extends Component {
     }
   }
 
-  getWeatherData () {
-    const url =
-      'https://api.apixu.com/v1/forecast.json?key=c740e2f3a23342fa9f8211442182910&q=' +
-      this.props.city +
-      '&days=7'
-    fetch(url)
-      .then(response => response.json())
-      .then(weather => {
-        this.setState({ weather, isLoading: false })
-      })
-      .catch(error => console.error(error))
-  }
-
   render () {
     const { isLoading, weather } = this.state
 
@@ -86,8 +77,6 @@ export class WeatherWeek extends Component {
         <h1>
           <span>{this.props.cityrussian}</span>
         </h1>
-
-        {/* <h2>Погода сейчас </h2> */}
 
         {isLoading ? (
           <Loader />
@@ -105,14 +94,9 @@ export class WeatherWeek extends Component {
             primary
           />
         )}
-
         <br />
-        {/* <h2>Погода на неделю</h2> */}
-
         {this.getWeekList()}
       </WeatherWeekStyled>
     )
   }
 }
-
-export default WeatherWeek
