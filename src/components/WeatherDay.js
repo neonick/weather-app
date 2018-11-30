@@ -61,8 +61,8 @@ export default class WeatherDay extends Component {
   renderCurrent () {
     if (this.props.primary) {
       return <div>
-        <CurrentTemp>+{this.props.temp}°</CurrentTemp>
-          ощущается как +{this.props.feel}°
+        <CurrentTemp>{this.props.temp}°</CurrentTemp>
+          ощущается как {this.props.feel}°
       </div>
     } else {
       return <div>
