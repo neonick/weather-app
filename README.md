@@ -1,4 +1,3 @@
-TODO
- - split presentation and logic
- - reduce runtime
- - styled-components ?
+## Weather app
+
+Just small app to try styled-components and make weather calendar for my Europe trip.

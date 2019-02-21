@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const anim = keyframes`
@@ -11,7 +10,7 @@ const anim = keyframes`
   }
 `
 
-const LoaderBox = styled.div`
+const Loader = styled.div`
   width: 40px;
   height: 40px;
   background-color: #fff;
@@ -19,8 +18,4 @@ const LoaderBox = styled.div`
   animation: ${anim} 1.0s infinite ease-in-out;
 `
 
-export default class Loader extends Component {
-  render () {
-    return <LoaderBox />
-  }
-}
+export default Loader
