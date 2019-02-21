@@ -74,14 +74,16 @@ export default class WeatherDay extends Component {
   }
 
   render () {
-    return <WeatherDayStyled primary={this.props.primary}>
-      <WeekDayName>{this.props.dayname}</WeekDayName>
-      <WeekDayDM>{this.props.date}</WeekDayDM>
-      <WeekDayIcon>
-        <img src={this.props.pic} alt='weather icon' />
-      </WeekDayIcon>
-      {this.renderCurrent()}
-      <WeekDayStatus primary={this.props.primary}>{this.props.status}</WeekDayStatus>
-    </WeatherDayStyled>
+    return (
+      <WeatherDayStyled primary={this.props.primary}>
+        <WeekDayName>{this.props.dayname}</WeekDayName>
+        <WeekDayDM>{this.props.date}</WeekDayDM>
+        <WeekDayIcon>
+          <img src={this.props.pic} alt='weather icon' />
+        </WeekDayIcon>
+        {this.renderCurrent()}
+        <WeekDayStatus primary={this.props.primary}>{this.props.status}</WeekDayStatus>
+      </WeatherDayStyled>
+    )
   }
 }
