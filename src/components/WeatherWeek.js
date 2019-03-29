@@ -70,31 +70,11 @@ export default class WeatherWeek extends Component {
   }
 
   render () {
-    const { isLoading, weather } = this.state
-
     return (
       <WeatherWeekStyled>
         <h1>
           <span>{this.props.cityrussian}</span>
         </h1>
-
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <WeatherDay
-            date={this.formatDate(weather.location.localtime, true)}
-            temp={weather.current.temp_c}
-            feel={weather.current.feelslike_c}
-            dayname={this.formatDayOfWeek(weather.location.localtime)}
-            status={this.formatStatus(
-              weather.current.condition.code,
-              weather.current.is_day
-            )}
-            pic={weather.current.condition.icon}
-            primary
-          />
-        )}
-        <br />
         {this.getWeekList()}
       </WeatherWeekStyled>
     )
